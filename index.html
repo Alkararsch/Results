@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نتائج الطلاب</title>
+    <style>
+        body {
+            font-family: 'Tajawal', Arial, sans-serif;
+            text-align: center;
+            direction: rtl;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        input {
+            width: calc(100% - 24px);
+            padding: 12px;
+            font-size: 18px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            outline: none;
+            text-align: center;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            font-size: 18px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #resultImage {
+            max-width: 100%;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            display: none;
+        }
+        .download-button {
+            margin-top: 20px;
+            padding: 12px;
+            font-size: 18px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .download-button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>ثانوية الكرار للمتميزن</h1> <!-- النص الخاص باسم المدرسة -->
+        <h2>البحث عن نتيجة الطالب</h2>
+        <input type="text" id="searchBox" placeholder="أدخل رقم الطالب">
+        <br><br>
+        <button onclick="showResult()">عرض النتيجة</button>
+        <br>
+        <img id="resultImage" alt="نتيجة الطالب">
+        <br>
+        <button class="download-button" id="downloadBtn" style="display:none;" onclick="downloadImage()">تحميل النتيجة</button> <!-- زر تحميل الصورة -->
+    </div>
+
+    <script>
+        function showResult() {
+            var studentId = document.getElementById("searchBox").value.trim();
+            if (studentId) {
+                var imageUrl = studentId + ".jpg"; // تغيير الامتداد حسب صورك (مثلاً png)
+                document.getElementById("resultImage").src = imageUrl;
+                document.getElementById("resultImage").style.display = "block";
+                document.getElementById("downloadBtn").style.display = "inline-block"; // إظهار زر تحميل الصورة
+            } else {
+                alert("يرجى إدخال رقم الطالب!");
+            }
+        }
+
+        function downloadImage() {
+            var imageUrl = document.getElementById("resultImage").src;
+            var link = document.createElement("a");
+            link.href = imageUrl;
+            link.download = imageUrl.split('/').pop(); // تحميل الصورة باستخدام اسمها
+            link.click();
+        }
+    </script>
+
+</body>
+</html>

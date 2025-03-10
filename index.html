@@ -9,7 +9,7 @@
             font-family: 'Tajawal', Arial, sans-serif;
             text-align: center;
             direction: rtl;
-            background-color: #f4f7fc;
+            background-color: #e3f2fd;
             margin: 0;
             padding: 20px;
         }
@@ -24,20 +24,20 @@
         }
         h1 {
             font-size: 36px;
-            color: #333;
+            color: #0d47a1;
             margin-bottom: 20px;
             font-weight: bold;
         }
         h2 {
             font-size: 24px;
-            color: #555;
+            color: #1565c0;
             margin-bottom: 30px;
         }
         input {
             width: calc(100% - 24px);
             padding: 15px;
             font-size: 20px;
-            border: 2px solid #ddd;
+            border: 2px solid #42a5f5;
             border-radius: 8px;
             outline: none;
             text-align: center;
@@ -48,7 +48,7 @@
             width: 100%;
             padding: 15px;
             font-size: 20px;
-            background-color: #007bff;
+            background-color: #1976d2;
             color: white;
             border: none;
             border-radius: 8px;
@@ -56,7 +56,7 @@
             transition: 0.3s;
         }
         button:hover {
-            background-color: #0056b3;
+            background-color: #0d47a1;
         }
         #resultImage {
             max-width: 100%;
@@ -66,25 +66,31 @@
             display: none;
         }
         .download-button {
-            margin-top: 30px;
+            margin-top: 20px;
             padding: 15px;
             font-size: 20px;
-            background-color: #28a745;
+            background-color: #2e7d32;
             color: white;
             border: none;
             border-radius: 8px;
             cursor: pointer;
             transition: 0.3s;
+            display: none;
         }
         .download-button:hover {
-            background-color: #218838;
+            background-color: #1b5e20;
+        }
+        .footer {
+            margin-top: 30px;
+            font-size: 16px;
+            color: #555;
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h1>ثانوية الكرار للمتميزين</h1> <!-- النص الخاص باسم المدرسة -->
+        <h1>ثانوية الكرار للمتميزين</h1>
         <h2>البحث عن نتيجة الطالب</h2>
         <input type="text" id="searchBox" placeholder="أدخل رقم الطالب">
         <br><br>
@@ -92,17 +98,21 @@
         <br>
         <img id="resultImage" alt="نتيجة الطالب">
         <br>
-        <button class="download-button" id="downloadBtn" style="display:none;" onclick="downloadImage()">تحميل النتيجة</button> <!-- زر تحميل الصورة -->
+        <button class="download-button" id="downloadBtn" onclick="downloadImage()">تحميل النتيجة</button>
+    </div>
+
+    <div class="footer">
+        &copy; 2025 جميع الحقوق محفوظة - حيدر شاكر 
     </div>
 
     <script>
         function showResult() {
             var studentId = document.getElementById("searchBox").value.trim();
             if (studentId) {
-                var imageUrl = studentId + ".jpg"; // تغيير الامتداد حسب صورك (مثلاً png)
+                var imageUrl = studentId + ".jpg";
                 document.getElementById("resultImage").src = imageUrl;
                 document.getElementById("resultImage").style.display = "block";
-                document.getElementById("downloadBtn").style.display = "inline-block"; // إظهار زر تحميل الصورة
+                document.getElementById("downloadBtn").style.display = "inline-block";
             } else {
                 alert("يرجى إدخال رقم الطالب!");
             }
@@ -112,7 +122,7 @@
             var imageUrl = document.getElementById("resultImage").src;
             var link = document.createElement("a");
             link.href = imageUrl;
-            link.download = imageUrl.split('/').pop(); // تحميل الصورة باستخدام اسمها
+            link.download = imageUrl.split('/').pop();
             link.click();
         }
     </script>
